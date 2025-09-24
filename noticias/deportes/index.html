@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/style.css">
   <title>Deportes en El Faro</title>
 </head>
 <body>
@@ -20,7 +22,7 @@
         <hgroup>
           <a href="/"><h1>El Faro</h1></a>
           <h2>Iluminando con Información</h2>
-          <div id="fecha-hora" style="font-size:1.1rem; color:#555; margin-top:8px;"></div>
+          <div id="hora" style="font-size:1.1rem; color:#555; margin-top:8px;"></div>
         </hgroup>
       </td>
 
@@ -47,44 +49,9 @@
       <section class="titulares">
         <h2>Deportes en El Faro</h2>
         <div id="contador-articulos" style="font-size:1rem; color:#333; margin-bottom:10px;"></div>
-        <table class="tabla-titulares" id="tabla-articulos">
-          <tr>
-            <td>
-              <img src="/assets/images/noticias/deportes/cristian-garay-arbitro-superclasico.jpg" height="150" alt="ANFP confirma al árbitro para el Superclásico entre Colo Colo y la U: este es su historial con ambos clubes">
-            </td>
-            <td>
-              <h3>ANFP confirma al árbitro para el Superclásico entre Colo Colo y la U: este es su historial con ambos clubes</h3>
-              <p>
-                La ANFP dio a conocer en las últimas horas al árbitro que impartirá justicia en el duelo entre albos y azules en el Estadio Monumental.
-                <a href="/noticias/deportes/ANFP-dio-a-conocer-el-arbitro-del-superclasico-entre-colo-colo-y-universidad-de-chile.html">Leer más</a>
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img src="/assets/images/noticias/deportes/damian-pizarro-nuevo-equipo-francia.webp" height="150" alt="Es oficial: Damián Pizarro le dice adiós a Udinese y tiene nuevo club en Europa">
-            </td>
-            <td>
-              <h3>Es oficial: Damián Pizarro le dice adiós a Udinese y tiene nuevo club en Europa</h3>
-              <p>
-                Tal como se había adelantado en las últimas horas, Damián Pizarro concretó su salida de Udinese. El joven delantero chileno fue enviado a préstamo por el club italiano y este martes se oficializó su traspaso al Le Havre, equipo de la Ligue 1 de Francia.
-                <a href="/noticias/deportes/damian-pizarro-tiene-nuevo-equipo-en-europa.html">Leer más</a>
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img src="/assets/images/noticias/deportes/inauguracion-claro-arena-universidad-catolica.webp" height="150" alt="20 mil hinchas, show de luces y lienzos: los detalles de la multitudinaria inauguración del Claro Arena">
-            </td>
-            <td>
-              <h3>20 mil hinchas, show de luces y lienzos: los detalles de la multitudinaria inauguración del Claro Arena.</h3>
-              <p>
-                Universidad Católica retornó a su casa después de más de tres años de espera, con el triunfo por 2-0 ante Unión Española. El renovado reducto contó con una especial ceremonia en la previa, exhibiendo la moderna luminaria, un espectáculo pirotécnico y el incesante aliento del público cruzado.
-                <a href="/noticias/deportes/inauguracion-claro-arena-universidad-catolica.html">Leer más</a>
-              </p>
-            </td>
-          </tr>
-        </table>
+        <div class="tabla-titulares" id="container-articulos">
+
+        </div>
         <form id="form-articulo" style="margin-top:20px;">
           <h3>Agregar noticia deportiva</h3>
           <input type="text" id="titulo-articulo" placeholder="Título de la noticia" required style="width:98%;margin-bottom:6px;"><br>
@@ -107,79 +74,30 @@
 
   <footer>
   </footer>
-
   <script>
-    // Fecha y hora en vivo
-    function actualizarFechaHora() {
-      const ahora = new Date();
-      const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      const fecha = ahora.toLocaleDateString('es-CL', opciones);
-      const hora = ahora.toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-      document.getElementById('fecha-hora').textContent = `${fecha} - ${hora}`;
-    }
-    setInterval(actualizarFechaHora, 1000);
-    actualizarFechaHora();
-
-    // Artículos dinámicos
-    const tabla = document.getElementById('tabla-articulos');
-    let articulos = Array.from(tabla.querySelectorAll('tr')).map(tr => {
-      const titulo = tr.querySelector('h3') ? tr.querySelector('h3').textContent : '';
-      const descripcion = tr.querySelector('p') ? tr.querySelector('p').textContent : '';
-      const imagen = tr.querySelector('img') ? tr.querySelector('img').src : '';
-      const enlace = tr.querySelector('a') ? tr.querySelector('a').href : '#';
-      return { titulo, descripcion, imagen, enlace };
-    });
-
-    function renderArticulos() {
-      tabla.innerHTML = '';
-      articulos.forEach(articulo => {
-        const fila = document.createElement('tr');
-        fila.innerHTML = `
-          <td>
-            <img src="${articulo.imagen}" height="150" alt="${articulo.titulo}">
-          </td>
-          <td>
-            <h3>${articulo.titulo}</h3>
-            <p>
-              ${articulo.descripcion}
-              <a href="${articulo.enlace}">Leer más</a>
-            </p>
-          </td>
-        `;
-        tabla.appendChild(fila);
-      });
-      document.getElementById('contador-articulos').textContent = `Cantidad de artículos: ${articulos.length}`;
-    }
-    renderArticulos();
-
-    // Formulario para agregar noticia
-    document.getElementById('form-articulo').addEventListener('submit', function(e){
-      e.preventDefault();
-      const titulo = document.getElementById('titulo-articulo').value.trim();
-      const desc = document.getElementById('desc-articulo').value.trim();
-      if(titulo && desc){
-        articulos.push({
-          titulo: titulo,
-          descripcion: desc,
-          imagen: "https://via.placeholder.com/150x100?text=Noticia",
-          enlace: "#"
-        });
-        renderArticulos();
-        this.reset();
-      }
-    });
-
-    // Formulario de contacto
-    document.getElementById('form-contacto').addEventListener('submit', function(e){
-      e.preventDefault();
-      const nombre = document.getElementById('nombre-contacto').value.trim();
-      const mensaje = document.getElementById('mensaje-contacto').value.trim();
-      if(nombre && mensaje){
-        document.getElementById('mensaje-enviado').textContent = `¡Gracias ${nombre}, tu mensaje fue enviado!`;
-        this.reset();
-        setTimeout(()=>{document.getElementById('mensaje-enviado').textContent='';}, 4000);
-      }
-    });
+    let articulos = [
+  {
+    titulo: "ANFP confirma al árbitro para el Superclásico entre Colo Colo y la U: este es su historial con ambos clubes",
+    descripcion: "La ANFP dio a conocer en las últimas horas al árbitro que impartirá justicia en el duelo entre albos y azules en el Estadio Monumental.",
+    imagen: "/assets/images/noticias/deportes/cristian-garay-arbitro-superclasico.jpg",
+    enlace: "/noticias/deportes/ANFP-dio-a-conocer-el-arbitro-del-superclasico-entre-colo-colo-y-universidad-de-chile.html"
+  },
+  {
+    titulo: "Es oficial: Damián Pizarro le dice adiós a Udinese y tiene nuevo club en Europa",
+    descripcion: "Tal como se había adelantado en las últimas horas, Damián Pizarro concretó su salida de Udinese. El joven delantero chileno fue enviado a préstamo por el club italiano y este martes se oficializó su traspaso al Le Havre, equipo de la Ligue 1 de Francia.",
+    imagen: "/assets/images/noticias/deportes/damian-pizarro-nuevo-equipo-francia.webp",
+    enlace: "/noticias/deportes/damian-pizarro-tiene-nuevo-equipo-en-europa.html"
+  },
+  {
+    titulo: "20 mil hinchas, show de luces y lienzos: los detalles de la multitudinaria inauguración del Claro Arena",
+    descripcion: "Universidad Católica retornó a su casa después de más de tres años de espera, con el triunfo por 2-0 ante Unión Española. El renovado reducto contó con una especial ceremonia en la previa, exhibiendo la moderna luminaria, un espectáculo pirotécnico y el incesante aliento del público cruzado.",
+    imagen: "/assets/images/noticias/deportes/inauguracion-claro-arena-universidad-catolica.webp",
+    enlace: "/noticias/deportes/inauguracion-claro-arena-universidad-catolica.html"
+  }
+  ];
   </script>
+  <script src="/js/hora.js"></script>
+  <script src="/js/agregarNoticias.js"></script>
+  <script src="/js/contacto.js"></script>
 </body>
 </html>
