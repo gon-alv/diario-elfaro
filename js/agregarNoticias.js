@@ -18,7 +18,7 @@ function renderArticulos() {
     <div class="articulo-destacado" style="margin-bottom: 30px;">
       <div class="card">
         <div class="card-image">
-          <figure class="image is-16by9">
+          <figure class="image articulo-destacado-img">
             <img src="${ultimoArticulo.imagen}" alt="${ultimoArticulo.descripcion}">
           </figure>
         </div>
@@ -44,7 +44,7 @@ function renderArticulos() {
         <div class="column is-one-third">
           <div class="card">
             <div class="card-image">
-              <figure class="image is-4by3">
+              <figure class="image is-1by1">
                 <img src="${articulo.imagen}" alt="${articulo.descripcion}">
               </figure>
             </div>
@@ -93,63 +93,3 @@ document.addEventListener("DOMContentLoaded", function () {
   renderArticulos();
   validarFormulario();
 });
-
-/*// Artículos dinámicos
-function renderArticulos() {
-  const contenedorArticulos = document.getElementById("container-articulos");
-  // Limpiar el contenedor antes de renderizar
-  contenedorArticulos.innerHTML = '';
-
-  // Crear todas las tarjetas de una sola vez
-  const tarjetas = articulos.map(articulo => `
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="${articulo.imagen}" class="img-fluid rounded-start w-100 h-100 object-fit-cover" alt="${articulo.descripcion}">
-        </div>
-        <div class="col-md-8">
-          <div class="contenido-titular">
-            <h5 class="card-title">${articulo.titulo}</h5>
-            <p class="card-text">${articulo.descripcion}</p>
-            <a href="${articulo.enlace}">
-              <p>Leer más</p>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>`
-  ).join(''); // Unir todas las tarjetas en un solo string
-
-  // Insertar todas las tarjetas de una vez
-  contenedorArticulos.innerHTML = tarjetas;
-  
-  // Actualizar contador
-  document.getElementById('contador-articulos').textContent = `Cantidad de artículos: ${articulos.length}`;
-}
-
-const validarFormulario = () => {
-  const formulario = document.getElementById("form-articulo");
-
-  formulario.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const titulo = document.getElementById("titulo-articulo").value.trim();
-    const desc = document.getElementById("desc-articulo").value.trim();
-    if (titulo && desc) {
-      const nuevoArticulo = {
-        titulo: titulo,
-        descripcion: desc,
-        imagen: "https://lipsum.app/random/600x300?id=",
-        enlace: "#"
-      }
-      articulos.push(nuevoArticulo);
-      renderArticulos();
-      formulario.reset();
-    }
-  })
-};
-
-document.addEventListener("DOMContentLoaded", function () {
-  renderArticulos();
-  validarFormulario();
-});*/
