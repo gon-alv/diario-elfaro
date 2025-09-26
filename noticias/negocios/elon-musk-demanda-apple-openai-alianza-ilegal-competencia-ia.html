@@ -9,39 +9,27 @@
 </head>
 <body>
   <header>
-    <table>
-      <td>
-        <div class="logo-container">
-          <a href="/">
-            <img src="/assets/images/logo-noname.png" alt="El Faro. Iluminando con Información" width=150>
-          </a>
-        </div>
-      </td>
-      <td>
-        <hgroup>
+    <nav class="navbar">
+      <div class="logo-container">
+        <a href="/">
+          <img src="/assets/images/logo-noname.png" alt="El Faro. Iluminando con Información" width="70">
+        </a>
+        <div>
           <a href="/"><h1>El Faro</h1></a>
           <h2>Iluminando con Información</h2>
-          <div id="hora" style="font-size:1.1rem; color:#555; margin-top:8px;"></div>
-        </hgroup>
-      </td>
-
-      <td>
-        <nav>
-          <ul>
-            <li>
-              <a href="/">Inicio</a>
-            </li>
-            <li>
-              <a href="/noticias/deportes/">Deportes</a>
-            </li>
-            <li>
-              <a href="/noticias/negocios/">Negocios</a>
-            </li>
-          </ul>
-        </nav>
-      </td>
-    </table>
-
+          <div id="hora"></div>
+        </div>
+      </div>
+      <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/noticias/deportes/">Deportes</a></li>
+        <li><a href="/noticias/negocios/">Negocios</a></li>
+        <li><a href="/noticias/internacional/">Internacional</a></li>
+        <li>
+          <a href="/noticias/espectaculos/">Espectaculos</a>
+        </li>
+      </ul>
+    </nav>
   </header>
   <main>
     <div class="page-container">
@@ -51,7 +39,7 @@
           <h3>Las empresas del magnate, xAI y X acusaron a ambas compañías de favorecer a ChatGPT como asistente exclusivo del iPhone y de excluir a rivales como Grok</h3>
           <h2>Negocios</h2>
         </hgroup>
-        <div class="image-container">
+        <div class="main-image-container">
           <img src="/assets/images/noticias/negocios/elon-musk-demanda-apple-openai-alianza-ilegal-competencia-ia.webp" alt="Latam Airlines se convirtió en la empresa más valiosa de la Bolsa de Chile: así está el top 10" height="450">
         </div>
 
@@ -107,6 +95,9 @@
       <a href="/noticias/negocios/">Volver</a>
     </div>
   </main>
+  <footer>
+    <h1>El Faro, Iluminando con Información.</h1>
+  </footer>
 </body>
 <script src="/js/hora.js"></script>
 </html>

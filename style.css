@@ -14,22 +14,75 @@ main {
 
 header {
     background-color: #f1f1f1;
-    padding: 1rem;
-    margin-bottom: 2rem;
-    border-radius: 0.5rem;
+    position: relative;
 }
 
 header h1 {
     font-family: "Arvo", serif;
     font-weight: 700;
-    color: #3f3f3f;
-    font-size: 2rem;
+    color: #022d47;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    text-shadow: 1px 2px 0 #faedb4, 0 2px 8px #f3642622;
 }
 
-/* Bara de navegacion */
+header h2 {
+    color: #f36426;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 0.2em;
+    margin-bottom: 0.5em;
+}
+
+.navbar {
+    background: #f1f1f1;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(2,45,71,0.07);
+    padding: 1.2rem 1rem 1rem 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+.logo-container a {
+    text-decoration: none;
+}
+.logo-container img {
+    margin-right: 1rem;
+}
+.logo-container h1 {
+    margin: 0;
+}
+.logo-container h2 {
+    margin: 0;
+}
+#hora {
+    font-size: 1.1rem;
+    color: #555;
+    margin-top: 8px;
+}
+.nav-menu {
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+/* ara de navegacion */
 header nav ul {
     list-style: none;
     padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    height: 100%;
+    gap: 0.2rem;
 }
 
 header nav ul li {
@@ -38,13 +91,18 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color: #007acc;
-    font-weight: 500;
-    transition: all 0.3s ease;
+    color: #022d47;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-bottom 0.2s;
+    padding: 0.2em 0.5em;
+    border-radius: 4px;
 }
 
 header nav ul li a:hover {
-    color: #005c99;
+    color: #f36426;
+    background: #faedb4;
+    border-bottom: 2px solid #f36426;
     text-decoration: none;
 }
 
@@ -56,8 +114,40 @@ footer {
     font-style: italic;
     padding: 2rem;
     margin-top: 2rem;
+} 
+/* Estilos pagina de lectura*/
+.noticia {
+    margin-top: 3rem;
+    margin-left: 12.5%;
+    margin-right: 12.5%;
 }
 
+.noticia hgroup h2 {
+    font-style: italic;
+}
+
+.noticia p {
+    margin-bottom: 1rem;
+    text-align:justify;
+}
+
+.noticia audio {
+    margin-block: 3rem;
+}
+
+.main-image-container {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+.main-image-container img {
+    border-radius: 15px;
+}
+
+.fecha {
+    color: slategrey;
+    font-style: italic;
+    font-size: 1.75dvh
+}
 /* Variables para Bulma */
 .card {
     transition: all 0.3s ease;
@@ -78,7 +168,6 @@ footer {
 
 .content h6 {
     color: #434343;
-
 }
 
 .content h3 {
@@ -92,6 +181,14 @@ footer {
 
 .button {
     font-family: "Arvo", serif;
+    background-color: #f36426;
+    color:#1a1a1f;
+    font-weight: bolder;
+}
+.button:hover {
+    background-color: #ec885e ;
+    color:#3a3a3a;
+    font-weight: bolder;
 }
 
 .input, .textarea {
@@ -108,7 +205,6 @@ footer {
     color: #434343;
 }
 
-/* Mantiene 3by1 en escritorio, 3by4 en móvil */
 .articulo-destacado-img {
   aspect-ratio: 3 / 1;
   width: 100%;
@@ -125,4 +221,9 @@ footer {
   .articulo-destacado-img {
     aspect-ratio: 3 / 4;
   }
+
+  .button {
+    font-size: large;
+  }
+  
 }
